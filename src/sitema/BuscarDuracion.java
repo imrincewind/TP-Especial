@@ -1,6 +1,7 @@
 package sitema;
 
 public class BuscarDuracion extends Busqueda {
+	
 	int tiempo;
 	
 	public BuscarDuracion(int t) {
