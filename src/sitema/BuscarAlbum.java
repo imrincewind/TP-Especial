@@ -1,4 +1,4 @@
-package sitema;
+package TPEspecial;
 
 public class BuscarAlbum extends Busqueda {
 

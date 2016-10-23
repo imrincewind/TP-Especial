@@ -1,4 +1,4 @@
-package sitema;
+package TPEspecial;
 
 import java.util.Collections;
 import java.util.Vector;
@@ -58,18 +58,20 @@ public class Lista extends ElementoMusical {
 		return lista.contains(p);
 	}
 
+	public Pista eliminarPista(Pista pista) {
+        for (int i = 0; i < lista.size(); i++) {
+            Pista nueva = lista.get(i).eliminarPista(pista);
+            if(nueva != null && nueva.equals(pista)) {
+                lista.remove(i);
+            }
+        }
+        return null;
+    }
 
-	public void borrar(Pista p) {
-		for(int i = 0; i < lista.size();i++){
-			if(lista.elementAt(i).contiene(p)){
-				((Lista)lista.elementAt(i)).delete(p);
-			}
-		}
+	public void eliminarPista(Pista p, Lista pl) {
+		pl.eliminarPista(p);
 	}
 
-	private void delete(Pista p) {
-		lista.remove(p);
-	}
 
 
 }

@@ -1,4 +1,4 @@
-package sitema;
+package TPEspecial;
 
 public abstract class Busqueda {
 

@@ -1,4 +1,4 @@
-package sitema;
+package TPEspecial;
 
 public class MainMusica {
 
@@ -41,26 +41,28 @@ public class MainMusica {
 		Lista plist4 = new Lista("El indio");		
 		plist4.add(p12);
 		plist4.add(p11);	
-		
+
+
 		Lista coleccion = new Lista("Coleccion");
 		coleccion.add(plist1);
 		coleccion.add(plist2);
 		coleccion.add(plist3);
 		coleccion.add(plist4);
-		
-		//coleccion.borrar(p5);
-		
-		BuscarAlbum busqueda1 = new BuscarAlbum("la");
-		//BuscarNombre busqueda2 = new BuscarNombre("El Tiempo No Para");
-	//	BuscarDuracion busqueda3 = new BuscarDuracion(400);
-		
-		System.out.println(coleccion.getResumen());
+
+//		coleccion.eliminarPista(p12);
+
+        System.out.println(coleccion.getResumen());
+
+
+		Busqueda busqueda1 = new BuscarAlbum("la");
+        Busqueda busqueda2 = new BuscarNombre("El Tiempo No Para");
+        Busqueda busqueda3 = new BuscarDuracion(400);
 
 		System.out.println(coleccion.buscador(busqueda1).size() + " elementos encontrados.");
-		for (Pista p : coleccion.buscador(busqueda1)) System.out.println("- " + p.getNombre());
+		for (Pista p : coleccion.buscador(busqueda1)) System.out.println("- " + p.getResumen());
 		
-		//System.out.println(coleccion.getResumen());
-	//	System.out.println(coleccion.getDuracion());
-		
+//		System.out.println(coleccion.getResumen());
+//		System.out.println(coleccion.getDuracion());
+
 }
 	}

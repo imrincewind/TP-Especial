@@ -1,4 +1,4 @@
-package sitema;
+package TPEspecial;
 
 import java.util.Vector;
 
@@ -30,7 +30,7 @@ public class Pista extends ElementoMusical{
 	}
 
 	public String getResumen() {
-		String resumen = "ID: " + id + ". Nombre: " + nombre +  ". Duración: " + duracionSegs + " segs. Artista: " + artista + ". Album: " + album + ". Año: " + anio + ". Genero: " + genero;
+		String resumen = "ID: " + id + ". Nombre: " + nombre +  ". Duraciï¿½n: " + duracionSegs + " segs. Artista: " + artista + ". Album: " + album + ". Aï¿½o: " + anio + ". Genero: " + genero;
 		if(comentario != null) resumen +=  ". Comentario: " +comentario + ".";
 		return resumen;
 	}
@@ -42,9 +42,6 @@ public class Pista extends ElementoMusical{
 		return 1;
 	}
 
-	public boolean contiene(Pista p) {
-		return equals(p);
-	}
 	
 	public Vector<Pista> buscador(Busqueda b) {
 		Vector <Pista> resultado = new Vector<Pista>();
@@ -53,8 +50,10 @@ public class Pista extends ElementoMusical{
 		}
 		return resultado;
 	}
-	
-	public String getNombre(){
+
+    public Pista eliminarPista(Pista em) { return this; }
+
+    public String getNombre(){
 		return nombre;
 	}
 	public int getDuracion(){
