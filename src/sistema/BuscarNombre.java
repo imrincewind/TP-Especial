@@ -1,4 +1,4 @@
-package TPEspecial;
+package sistema;
 
 public class BuscarNombre extends Busqueda {
 	

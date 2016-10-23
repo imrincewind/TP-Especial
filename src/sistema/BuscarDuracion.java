@@ -1,4 +1,4 @@
-package TPEspecial;
+package sistema;
 
 public class BuscarDuracion extends Busqueda {
 	
