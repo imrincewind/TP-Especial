@@ -1,10 +1,10 @@
 package sistema;
 
-public class BuscarDuracion extends Busqueda {
+public class BuscarDuracionMayor extends Busqueda {
 	
 	int tiempo;
 	
-	public BuscarDuracion(int t) {
+	public BuscarDuracionMayor(int t) {
 		tiempo = t;
 	}
 		

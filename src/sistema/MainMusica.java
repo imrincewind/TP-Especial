@@ -1,5 +1,7 @@
 package sistema;
 
+import java.util.Vector;
+
 public class MainMusica {
 
 	public static void main(String[] args) {
@@ -31,8 +33,7 @@ public class MainMusica {
 		plist2.add(p7);
 		plist2.add(p12);
 		plist2.add(p1);
-		
-		
+
 		Lista plist3 = new Lista("Coldplay");		
 		plist3.add(p5);
 		plist3.add(p6);
@@ -42,27 +43,67 @@ public class MainMusica {
 		plist4.add(p12);
 		plist4.add(p11);	
 
-
+        // Creo una coleccion de pistas que contiene otras playlists
 		Lista coleccion = new Lista("Coleccion");
 		coleccion.add(plist1);
 		coleccion.add(plist2);
 		coleccion.add(plist3);
 		coleccion.add(plist4);
 
-//		coleccion.eliminarPista(p12);
+        // Imprimo playlist "Clasicos del rock" y su duracion.
+        System.out.println(coleccion.getResumen(plist1));
+        System.out.println("DURACION: " + coleccion.getDuracion(plist1));
 
-        System.out.println(coleccion.getResumen());
+        // Imprimo playlist "Lo mejor" y su duracion.
+		System.out.println(coleccion.getResumen(plist2));
+        System.out.println("DURACION: " + coleccion.getDuracion(plist2));
+
+        // Imprimo playlist "Coldplay" y su duracion.
+		System.out.println(coleccion.getResumen(plist3));
+        System.out.println("DURACION: " + coleccion.getDuracion(plist3));
 
 
-		Busqueda busqueda1 = new BuscarAlbum("la");
-        Busqueda busqueda2 = new BuscarNombre("El Tiempo No Para");
-        Busqueda busqueda3 = new BuscarDuracion(400);
+        // Pistas cuya duración es superior a 400 segundos.
+        Busqueda busqueda1 = new BuscarDuracionMayor(400);
+        printVector(coleccion.buscador(busqueda1));
 
-		System.out.println(coleccion.buscador(busqueda1).size() + " elementos encontrados.");
-		for (Pista p : coleccion.buscador(busqueda1)) System.out.println("- " + p.getResumen());
-		
-//		System.out.println(coleccion.getResumen());
-//		System.out.println(coleccion.getDuracion());
+        // Pistas cuyo género contenga la palabra “rock”.
+		Busqueda busqueda2 = new BuscarGenero("rock");
+        printVector(coleccion.buscador(busqueda2));
 
+        // Pistas cuyo nombre contenga “rock” pero cuyo interprete NO sea “LMFAO”.
+        Busqueda busqueda3 = new BuscarNombre("rock");
+        Busqueda busqueda4 = new BuscarArtista("lmfao");
+        Busqueda busqueda5 = new BNot(busqueda4);
+        Busqueda busqueda6 = new BAnd(busqueda3, busqueda5);
+        printVector(coleccion.buscador(busqueda6));
+
+        // Las pistas cuyo género contenga “rock” y cuya fecha sea mayor a “2006”,
+        // o cuyo género contenga “rock” y cuyo intérprete sea “coldplay”.
+        Busqueda busqueda7 = new BuscarGenero("rock");
+        Busqueda busqueda8 = new BuscarAnioMayor(2006);
+        Busqueda busqueda9 = new BAnd(busqueda7, busqueda8);
+        Busqueda busqueda10 = new BuscarGenero("rock");
+        Busqueda busqueda11 = new BuscarArtista("coldplay");
+        Busqueda busqueda12 = new BAnd(busqueda10, busqueda11);
+        Busqueda busqueda13 = new BOr(busqueda9, busqueda12);
+        printVector(coleccion.buscador(busqueda13));
+
+        Pista p13 = new Pista("Paradise", 365, "Coldplay", "Mylo Xyloto", 2011, "Rock alternativo");
+        coleccion.add(p13);
+
+        // Vuelvo a imprimir las busquedas despues de agregar una nueva pista
+        printVector(coleccion.buscador(busqueda1));
+        printVector(coleccion.buscador(busqueda2));
+        printVector(coleccion.buscador(busqueda6));
+        printVector(coleccion.buscador(busqueda13));
+
+    }
+
+    // Metodo usado para imprimir el vector de pistas luego de la busqueda.
+    private static void printVector(Vector<Pista> pistas){
+        System.out.println(pistas.size() + " elementos encontrados:");
+        for (Pista p : pistas) System.out.println("- " + p.getResumen());
+        System.out.println();
+    }
 }
-	}
