@@ -8,15 +8,12 @@ public abstract class ElementoMusical {
 	public ElementoMusical(String nomb) {
 		nombre = nomb;
 	}
-	public String getNombre() {
-		return nombre;
-	}
+	public String getNombre() { return nombre; }
 	
 	public abstract int getDuracion();
 	public abstract int getCantidad();
-	public abstract String getResumen();
 	public abstract Vector<Pista> buscador(Busqueda b);
 
-	public abstract Pista eliminarPista(Pista em);
+	public abstract void eliminar(ElementoMusical em);
 
 }

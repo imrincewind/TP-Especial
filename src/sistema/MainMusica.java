@@ -6,18 +6,18 @@ public class MainMusica {
 
 	public static void main(String[] args) {
 		
-		Pista p1 = new Pista("El Tiempo No Para", 311, "Bersuit Vergabarat", "De la cabeza", 2002, "Rock nacional");
-		Pista p2 = new Pista("Mi caramelo", 290, "Bersuit Vergabarat", "De la cabeza", 2002, "Rock nacional");
-		Pista p3 = new Pista("Party Rock Anthem", 408, "LMFAO", "Sorry for Party Rocking", 2011, "Electro pop");
-		Pista p4 = new Pista("Sorry for Party Rocking", 421, "LMFAO", "Sorry for Party Rocking", 2011, "Electro pop");
-		Pista p5 = new Pista("Fix you", 255, "Coldplay", "X&Y", 2005, "Rock alternativo");
-		Pista p6 = new Pista("Speed of Sound", 455, "Coldplay", "X&Y", 2005, "Rock alternativo");
-		Pista p7 = new Pista("Viva la vida", 320, "Coldplay", "Viva la vida", 2008, "Rock alternativo");
-		Pista p8 = new Pista("With or without you", 360, "U2", "The Joshua Tree", 1987, "Rock");
-		Pista p9 = new Pista("Vertigo", 355, "U2", "How to Dismantle an Atomic Bomb", 2004, "Rock");
-		Pista p10 = new Pista("City of Blinding Lights", 284, "U2", "How to Dismantle an Atomic Bomb", 2004, "Rock");
-		Pista p11 = new Pista("A la luz de la luna", 438, "El Indio Solari", "Pajaritos, bravos muchachitos", 2013, "Rock nacional");
-		Pista p12 = new Pista("Yo Canibal", 258, "Patricio rey y sus redonditos de ricota", "Lobo Suelto, Cordero atado", 1993, "Rock nacional");
+		Pista p1 = new Pista(1, "El Tiempo No Para", 311, "Bersuit Vergabarat", "De la cabeza", 2002, "Rock nacional");
+		Pista p2 = new Pista(2, "Mi caramelo", 290, "Bersuit Vergabarat", "De la cabeza", 2002, "Rock nacional");
+		Pista p3 = new Pista(3, "Party Rock Anthem", 408, "LMFAO", "Sorry for Party Rocking", 2011, "Electro pop");
+		Pista p4 = new Pista(4, "Sorry for Party Rocking", 421, "LMFAO", "Sorry for Party Rocking", 2011, "Electro pop");
+		Pista p5 = new Pista(5, "Fix you", 255, "Coldplay", "X&Y", 2005, "Rock alternativo");
+		Pista p6 = new Pista(6, "Speed of Sound", 455, "Coldplay", "X&Y", 2005, "Rock alternativo");
+		Pista p7 = new Pista(7, "Viva la vida", 320, "Coldplay", "Viva la vida", 2008, "Rock alternativo");
+		Pista p8 = new Pista(8, "With or without you", 360, "U2", "The Joshua Tree", 1987, "Rock");
+		Pista p9 = new Pista(9, "Vertigo", 355, "U2", "How to Dismantle an Atomic Bomb", 2004, "Rock");
+		Pista p10 = new Pista(10, "City of Blinding Lights", 284, "U2", "How to Dismantle an Atomic Bomb", 2004, "Rock");
+		Pista p11 = new Pista(11, "A la luz de la luna", 438, "El Indio Solari", "Pajaritos, bravos muchachitos", 2013, "Rock nacional");
+		Pista p12 = new Pista(12, "Yo Canibal", 258, "Patricio rey y sus redonditos de ricota", "Lobo Suelto, Cordero atado", 1993, "Rock nacional");
 		
 		Lista plist1 = new Lista("Clasicos del rock");
 		plist1.add(p1);
@@ -51,16 +51,16 @@ public class MainMusica {
 		coleccion.add(plist4);
 
         // Imprimo playlist "Clasicos del rock" y su duracion.
-        System.out.println(coleccion.getResumen(plist1));
-        System.out.println("DURACION: " + coleccion.getDuracion(plist1));
+        System.out.println(plist1);
+        System.out.println("DURACION: " + plist1.getDuracion());
 
         // Imprimo playlist "Lo mejor" y su duracion.
-		System.out.println(coleccion.getResumen(plist2));
-        System.out.println("DURACION: " + coleccion.getDuracion(plist2));
+		System.out.println(plist2);
+        System.out.println("DURACION: " + plist2.getDuracion());
 
         // Imprimo playlist "Coldplay" y su duracion.
-		System.out.println(coleccion.getResumen(plist3));
-        System.out.println("DURACION: " + coleccion.getDuracion(plist3));
+		System.out.println(plist3);
+        System.out.println("DURACION: " + plist3.getDuracion());
 
 
         // Pistas cuya duración es superior a 400 segundos.
@@ -89,7 +89,7 @@ public class MainMusica {
         Busqueda busqueda13 = new BOr(busqueda9, busqueda12);
         printVector(coleccion.buscador(busqueda13));
 
-        Pista p13 = new Pista("Paradise", 365, "Coldplay", "Mylo Xyloto", 2011, "Rock alternativo");
+        Pista p13 = new Pista(13, "Paradise", 365, "Coldplay", "Mylo Xyloto", 2011, "Rock alternativo");
         coleccion.add(p13);
 
         // Vuelvo a imprimir las busquedas despues de agregar una nueva pista
@@ -103,7 +103,7 @@ public class MainMusica {
     // Metodo usado para imprimir el vector de pistas luego de la busqueda.
     private static void printVector(Vector<Pista> pistas){
         System.out.println(pistas.size() + " elementos encontrados:");
-        for (Pista p : pistas) System.out.println("- " + p.getResumen());
+        for (Pista p : pistas) System.out.println(" - " + p);
         System.out.println();
     }
 }

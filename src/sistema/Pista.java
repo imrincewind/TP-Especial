@@ -10,13 +10,11 @@ public class Pista extends ElementoMusical{
     int id;
     int anio;
     String genero;
-    private static int contador_id = 1;
     String comentario;
 
-    public Pista(String nomb,int duraSegs,String artist, String alb, int ani, String gener) {
+    public Pista(int _id, String nomb,int duraSegs,String artist, String alb, int ani, String gener) {
         super(nomb);
-        id = contador_id;
-        contador_id++;
+        id = _id;
         duracionSegs = duraSegs;
         artista = artist;
         album = alb;
@@ -24,23 +22,27 @@ public class Pista extends ElementoMusical{
         genero = gener;
     }
 
-    public Pista(String nomb,int duraSegs,String artist, String alb, int ani, String gener, String coment){
-        this(nomb, duraSegs, artist, alb, ani, gener);
+    public Pista(int _id, String nomb,int duraSegs,String artist, String alb, int ani, String gener, String coment){
+        this(_id, nomb, duraSegs, artist, alb, ani, gener);
         comentario = coment;
     }
 
-    public String getResumen() {
+    public String toString() {
         String resumen = "ID: " + id + ". Nombre: " + nombre +  ". Duraci�n: " + duracionSegs + " segs. Artista: " + artista + ". Album: " + album + ". A�o: " + anio + ". Genero: " + genero;
         if(comentario != null) resumen +=  ". Comentario: " +comentario + ".";
         return resumen;
     }
 
+
     public boolean equals(Object o1) {
-        return nombre.equals(((Pista)o1).getNombre());
+        if (o1 instanceof Pista) {
+            Pista p = (Pista) o1;
+            return id == p.getId() && nombre.equals(p.getNombre()) && duracionSegs == p.getDuracion() && artista.equals(p.getArtista()) &&
+                    album.equals(p.getAlbum()) && anio == p.getAnio() && genero.equals(p.getGenero());
+        }
+        return false;
     }
-
     public int getCantidad() { return 1; }
-
 
     public Vector<Pista> buscador(Busqueda b) {
         Vector <Pista> resultado = new Vector<Pista>();
@@ -50,8 +52,9 @@ public class Pista extends ElementoMusical{
         return resultado;
     }
 
-    public Pista eliminarPista(Pista em) { return this; }
+    public void eliminar(ElementoMusical em) {}
 
+    public int getId() { return id; }
     public String getNombre(){
         return nombre;
     }
@@ -72,6 +75,11 @@ public class Pista extends ElementoMusical{
     }
     public String getComentario(){
         return comentario;
+    }
+
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public void setAlbum(String album) {
